@@ -3,48 +3,46 @@ public class Train {
     private int weight, miles;
     public train(String cn, String dc)
     {
-	    String name = cn;
-    	String to = dc;
+	    name = cn;
+    	destination = dc;
     }
     public train(String cn, String c, String oc, String dc, int w, int mt)
     {
-	    String name = cn;
-    	String contents = c;
-    	String from = oc;
-    	String to = dc;
-    	int weight = w;
-    	int miles = mt;
+	    name = cn;
+    	product = c;
+    	origin = oc;
+    	destination = dc;
+    	weight = w;
+    	miles = mt;
     }
 
-    public void getName()
+    public String getName()
     {
     	return name;
     }
 
-    public void getContents()
+    public String getContents()
     {
     	return contents;
     }
 
-    public void getOrigins()
+    public String getOrigins()
     {
     	return from;
     }
 
-    public void getDestination()
+    public String getDestination()
     {
     	return to;
     }
 
-    public void getWeight()
+    public int getWeight()
     {
     	return weight;
     }
 
-    public void getMiles()
+    public int getMiles()
     {
     	return miles;
     }
-
-
 }
