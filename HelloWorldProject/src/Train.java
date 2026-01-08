@@ -1,12 +1,12 @@
 public class Train {
     private String name, product, origin, destination;
     private int weight, miles;
-    public train(String cn, String dc)
+    public void train(String cn, String dc)
     {
 	    name = cn;
     	destination = dc;
     }
-    public train(String cn, String c, String oc, String dc, int w, int mt)
+    public void train(String cn, String c, String oc, String dc, int w, int mt)
     {
 	    name = cn;
     	product = c;
@@ -23,17 +23,17 @@ public class Train {
 
     public String getContents()
     {
-    	return contents;
+    	return product;
     }
 
     public String getOrigins()
     {
-    	return from;
+    	return origin;
     }
 
     public String getDestination()
     {
-    	return to;
+    	return destination;
     }
 
     public int getWeight()

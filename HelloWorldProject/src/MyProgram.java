@@ -36,10 +36,10 @@ public class MyProgram {
 		}
 		while(x.hasNext())
 		{
-			if(name.compareTo(D) < 0)
+			if(x.nextLine().compareTo(D) < 0)
 			{
-				Train myTrain = new Train(name, x.nextLine(), x.nextLine(), x.nextLine(), integer(x.nextLine()), integer(x.nextLine()));
-				if(myTrain.getMiles>700)
+				Train myTrain = new Train(x.nextLine(), x.nextLine(), x.nextLine(), x.nextLine(), Integer.valueOf(x.nextLine()), Integer.valueOf(x.nextLine()));
+				if(myTrain.getMiles()>700)
 				{
 					track1.add(myTrain);
 				}
@@ -50,7 +50,7 @@ public class MyProgram {
 			}
 			else
 			{
-				Train myTrain = new Train(name, x.nextLine());
+				Train myTrain = new Train(x.nextLine(), x.nextLine());
 			}
 		}
 		Train currentTrain = new Train();
@@ -60,11 +60,19 @@ public class MyProgram {
 		while(!track0.isEmpty())
 		{
 			currentTrain = track0.remove();
-			if(currentTrain.getDestination() == "Trenton")
+			if(currentTrain.getDestination().equals("Trenton"))
 			{
-				if(totalWeightA + currentTrain.getWeight())
-				trackA.push(currentTrain());
-				if(name.compareTo(D) > 0)
+				if(totalWeightA + currentTrain.getWeight() > limitTrackA)
+				{
+					Train tempEngine = new Train(ENG00000, "Trenton");
+					trackA.push(tempEngine);
+				}
+				else
+				{
+					trackA.push(currentTrain);
+					totalWeightA += currentTrain.getWeight();
+				}
+				if(temp.compareTo("D") > 0)
 				{
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
 					while(!trackA.isEmpty())
@@ -74,28 +82,61 @@ public class MyProgram {
 					}
 				}
 			}
-			else if(currentTrain.getDestination() == "Charlotte")
+			else if(currentTrain.getDestination().equals("Charlotte"))
 			{
-				trackB.push(currentTrain());
-				if(name.compareTo(D) > 0)
+				if(totalWeightB + currentTrain.getWeight() > limitTrackB)
 				{
-					
+					Train tempEngine = new Train(ENG00000, "Charlotte");
+					trackB.push(tempEngine);
+				}
+				else
+				{
+					trackB.push(currentTrain);
+					totalWeightB += currentTrain.getWeight();
+				}
+				if(temp.compareTo("D") > 0)
+				{
+					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
+					while(!trackB.isEmpty())
+					{
+						currentTrain = trackB.pop();
+						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
+					}
 				}
 			}
-			else if(currentTrain.getDestination() == "Baltimore")
+			else if(currentTrain.getDestination().equals("Baltimore"))
 			{
-				trackC.push(currentTrain());
-				if(name.compareTo(D) > 0)
+				if(totalWeightC + currentTrain.getWeight() > limitTrackC)
 				{
-					
+					Train tempEngine = new Train(ENG00000, "Baltimore");
+					trackC.push(tempEngine);
+				}
+				else
+				{
+					trackC.push(currentTrain);
+					totalWeightC += currentTrain.getWeight();
+				}
+				if(temp.compareTo("D") > 0)
+				{
+					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
+					while(!trackC.isEmpty())
+					{
+						currentTrain = trackC.pop();
+						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
+					}
 				}
 			}
 			else
 			{
 				trackD.push(currentTrain());
-				if(name.compareTo(D) > 0)
+				if(temp.compareTo("D") > 0)
 				{
-					
+					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
+					while(!trackC.isEmpty())
+					{
+						currentTrain = trackD.pop();
+						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
+					}
 				}
 			}
 		}
