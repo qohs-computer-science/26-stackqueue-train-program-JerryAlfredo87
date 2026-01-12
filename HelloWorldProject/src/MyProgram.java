@@ -1,8 +1,8 @@
 /*
- * TODO: Name
- * TODO: Date
- * TODO: Class Period
- * TODO: Program Description
+ * TODO: Name: Meade Havenstein
+ * TODO: Date: 1/12/26
+ * TODO: Class Period: 6
+ * TODO: Program Description:
  */
 import java.util.Scanner;
 import java.io.File;
@@ -27,18 +27,46 @@ public class MyProgram {
 		try{
 			File f = new File("HelloWorldProject/src/data.txt");
 			x = new Scanner (f);
-			String name = x.nextLine();
-			System.out.println(name);
+			/*String name = x.nextLine();
+			System.out.println(name);*/
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.getMessage());
 		}
+		String names = "";
+		String products = "";
+		String origins = "";
+    	String destinations = "";
+		int weights = 0;
+		int milex = 0;
+		Train myTrain;
 		while(x.hasNext())
 		{
-			if(x.nextLine().compareTo(D) < 0)
+			names = x.nextLine();
+			System.out.println(names);
+			if(names.equals("END"))
 			{
-				Train myTrain = new Train(x.nextLine(), x.nextLine(), x.nextLine(), x.nextLine(), Integer.valueOf(x.nextLine()), Integer.valueOf(x.nextLine()));
+
+			}
+			else if(names.compareTo("D") < 0)
+			{
+				products = x.nextLine();
+				origins = x.nextLine();
+				destinations = x.nextLine();
+				weights = x.nextInt();
+				milex = x.nextInt();
+				x.nextLine();
+			}
+			else
+			{
+				destinations = x.nextLine();
+			}
+			
+
+			if(names.compareTo("D") < 0)
+			{
+				myTrain = new Train(names, products, origins, destinations, weights, milex);
 				if(myTrain.getMiles()>700)
 				{
 					track1.add(myTrain);
@@ -50,21 +78,24 @@ public class MyProgram {
 			}
 			else
 			{
-				Train myTrain = new Train(x.nextLine(), x.nextLine());
+				myTrain = new Train(names, destinations);
+
 			}
 		}
-		Train currentTrain = new Train();
+		Train currentTrain;
+		String temp;
 		int totalWeightA = 0;
 		int totalWeightC = 0;
 		int totalWeightB = 0;
 		while(!track0.isEmpty())
 		{
 			currentTrain = track0.remove();
+			temp = currentTrain.getName();
 			if(currentTrain.getDestination().equals("Trenton"))
 			{
 				if(totalWeightA + currentTrain.getWeight() > limitTrackA)
 				{
-					Train tempEngine = new Train(ENG00000, "Trenton");
+					Train tempEngine = new Train("ENG00000", "Trenton");
 					trackA.push(tempEngine);
 				}
 				else
@@ -86,7 +117,7 @@ public class MyProgram {
 			{
 				if(totalWeightB + currentTrain.getWeight() > limitTrackB)
 				{
-					Train tempEngine = new Train(ENG00000, "Charlotte");
+					Train tempEngine = new Train("ENG00000", "Charlotte");
 					trackB.push(tempEngine);
 				}
 				else
@@ -108,7 +139,7 @@ public class MyProgram {
 			{
 				if(totalWeightC + currentTrain.getWeight() > limitTrackC)
 				{
-					Train tempEngine = new Train(ENG00000, "Baltimore");
+					Train tempEngine = new Train("ENG00000", "Baltimore");
 					trackC.push(tempEngine);
 				}
 				else
@@ -128,7 +159,7 @@ public class MyProgram {
 			}
 			else
 			{
-				trackD.push(currentTrain());
+				trackD.push(currentTrain);
 				if(temp.compareTo("D") > 0)
 				{
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
