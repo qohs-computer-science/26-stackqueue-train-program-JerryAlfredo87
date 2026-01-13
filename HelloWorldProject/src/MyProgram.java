@@ -2,7 +2,7 @@
  * TODO: Name: Meade Havenstein
  * TODO: Date: 1/12/26
  * TODO: Class Period: 6
- * TODO: Program Description:
+ * TODO: Program Description: The prurpose of this program is to send the cars to their proper destination.
  */
 import java.util.Scanner;
 import java.io.File;
@@ -76,10 +76,10 @@ public class MyProgram {
 					track0.add(myTrain);
 				}
 			}
-			else
+			else if (!names.equals("END"))
 			{
 				myTrain = new Train(names, destinations);
-
+				track0.add(myTrain);
 			}
 		}
 		Train currentTrain;
@@ -95,8 +95,12 @@ public class MyProgram {
 			{
 				if(totalWeightA + currentTrain.getWeight() > limitTrackA)
 				{
-					Train tempEngine = new Train("ENG00000", "Trenton");
-					trackA.push(tempEngine);
+					System.out.println("ENG00000 leaving for Trenton with the following cars:");
+					while(!trackA.isEmpty())
+					{
+						currentTrain = trackA.pop();
+						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
+					}
 				}
 				else
 				{
@@ -106,6 +110,7 @@ public class MyProgram {
 				if(temp.compareTo("D") > 0)
 				{
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
+					trackA.pop();
 					while(!trackA.isEmpty())
 					{
 						currentTrain = trackA.pop();
@@ -117,8 +122,12 @@ public class MyProgram {
 			{
 				if(totalWeightB + currentTrain.getWeight() > limitTrackB)
 				{
-					Train tempEngine = new Train("ENG00000", "Charlotte");
-					trackB.push(tempEngine);
+					System.out.println("ENG00000 leaving for Charlotte with the following cars:");
+					while(!trackB.isEmpty())
+					{
+						currentTrain = trackB.pop();
+						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
+					}
 				}
 				else
 				{
@@ -128,6 +137,7 @@ public class MyProgram {
 				if(temp.compareTo("D") > 0)
 				{
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
+					trackB.pop();
 					while(!trackB.isEmpty())
 					{
 						currentTrain = trackB.pop();
@@ -139,8 +149,12 @@ public class MyProgram {
 			{
 				if(totalWeightC + currentTrain.getWeight() > limitTrackC)
 				{
-					Train tempEngine = new Train("ENG00000", "Baltimore");
-					trackC.push(tempEngine);
+					System.out.println("ENG00000 leaving for Baltimore with the following cars:");
+					while(!trackC.isEmpty())
+					{
+						currentTrain = trackC.pop();
+						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
+					}
 				}
 				else
 				{
@@ -150,6 +164,7 @@ public class MyProgram {
 				if(temp.compareTo("D") > 0)
 				{
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
+					trackC.pop();
 					while(!trackC.isEmpty())
 					{
 						currentTrain = trackC.pop();
@@ -165,11 +180,12 @@ public class MyProgram {
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
 					while(!trackC.isEmpty())
 					{
-						currentTrain = trackD.pop();
+						currentTrain = trackD.peek();
 						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
 					}
 				}
 			}
 		}
+		
 	}
 }
