@@ -47,8 +47,8 @@ public class MyProgram {
 			System.out.println(names);
 			if(names.equals("END"))
 			{
-
-			}
+				//empty if making nothing happen if name is end
+			}//end if
 			else if(names.compareTo("D") < 0)
 			{
 				products = x.nextLine();
@@ -57,11 +57,11 @@ public class MyProgram {
 				weights = x.nextInt();
 				milex = x.nextInt();
 				x.nextLine();
-			}
+			}//end else if
 			else
 			{
 				destinations = x.nextLine();
-			}
+			}//end else
 			
 
 			if(names.compareTo("D") < 0)
@@ -70,18 +70,18 @@ public class MyProgram {
 				if(myTrain.getMiles()>700)
 				{
 					track1.add(myTrain);
-				}
+				}//end if
 				else
 				{
 					track0.add(myTrain);
-				}
-			}
+				}//end else
+			}//end if
 			else if (!names.equals("END"))
 			{
 				myTrain = new Train(names, destinations);
 				track0.add(myTrain);
-			}
-		}
+			}//end else if
+		}//end while
 		Train currentTrain;
 		String temp;
 		int totalWeightA = 0;
@@ -95,97 +95,115 @@ public class MyProgram {
 			{
 				if(totalWeightA + currentTrain.getWeight() > limitTrackA)
 				{
+					System.out.println("\nTrack A");
 					System.out.println("ENG00000 leaving for Trenton with the following cars:");
 					while(!trackA.isEmpty())
 					{
 						currentTrain = trackA.pop();
 						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
-					}
-				}
+					}//end while
+					totalWeightA = 0;
+				}//end if
 				else
 				{
 					trackA.push(currentTrain);
 					totalWeightA += currentTrain.getWeight();
-				}
+				}//end else
 				if(temp.compareTo("D") > 0)
 				{
+					System.out.println("\nTrack A");
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
 					trackA.pop();
 					while(!trackA.isEmpty())
 					{
 						currentTrain = trackA.pop();
 						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
-					}
-				}
-			}
+					}//end while
+					totalWeightA = 0;
+				}//end if
+			}//end if
 			else if(currentTrain.getDestination().equals("Charlotte"))
 			{
 				if(totalWeightB + currentTrain.getWeight() > limitTrackB)
 				{
+					System.out.println("\nTrack B");
 					System.out.println("ENG00000 leaving for Charlotte with the following cars:");
 					while(!trackB.isEmpty())
 					{
 						currentTrain = trackB.pop();
 						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
 					}
-				}
+					totalWeightB = 0;
+				}//end if
 				else
 				{
 					trackB.push(currentTrain);
 					totalWeightB += currentTrain.getWeight();
-				}
+				}//end else
 				if(temp.compareTo("D") > 0)
 				{
+					System.out.println("\nTrack B");
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
 					trackB.pop();
 					while(!trackB.isEmpty())
 					{
 						currentTrain = trackB.pop();
 						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
-					}
-				}
-			}
+					}//end while
+					totalWeightB = 0;
+				}//end if
+			}//end else if
 			else if(currentTrain.getDestination().equals("Baltimore"))
 			{
 				if(totalWeightC + currentTrain.getWeight() > limitTrackC)
 				{
+					System.out.println("\nTrack C");
 					System.out.println("ENG00000 leaving for Baltimore with the following cars:");
 					while(!trackC.isEmpty())
 					{
 						currentTrain = trackC.pop();
 						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
 					}
-				}
+					totalWeightC = 0;
+				}//end if
 				else
 				{
 					trackC.push(currentTrain);
 					totalWeightC += currentTrain.getWeight();
-				}
+				}//end else
 				if(temp.compareTo("D") > 0)
 				{
+					System.out.println("\nTrack C");
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
 					trackC.pop();
 					while(!trackC.isEmpty())
 					{
 						currentTrain = trackC.pop();
 						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
-					}
-				}
-			}
+					}//end while
+					totalWeightC = 0;
+				}//end if
+			}//end else if
 			else
 			{
 				trackD.push(currentTrain);
 				if(temp.compareTo("D") > 0)
 				{
+					System.out.println("\nTrack D");
 					System.out.println(currentTrain.getName() + " leaving for " + currentTrain.getDestination() + " with the following cars:");
-					while(!trackC.isEmpty())
+					while(!trackD.isEmpty())
 					{
 						currentTrain = trackD.peek();
 						System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents());
-					}
-				}
-			}
-		}
-		
+					}//end while
+				}//end if
+			}//end else
+		}//end while
+		System.out.println("\nTrack D");
+		while(!trackD.isEmpty())
+		{
+			currentTrain = trackD.pop();
+			System.out.println(currentTrain.getName() + " containing " + currentTrain.getContents() + " heading to " + currentTrain.getDestination());
+		}//end while
 	}
 }
